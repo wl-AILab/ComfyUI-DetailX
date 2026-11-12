@@ -1,0 +1,10 @@
+tests/
+*.sqlite3*
+.detailx-state/
+.env
+__pycache__/
+.pytest_cache/
+PUBLISHING.md
+.github/
+scripts/
+requirements-test.txt

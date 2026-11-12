@@ -1,0 +1,30 @@
+name: Publish Comfy Registry package
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+permissions:
+  contents: read
+concurrency:
+  group: comfy-registry-publish
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check package and billing guards
+        run: |
+          python -m pip install -r requirements-test.txt
+          python -m pytest tests -q
+          python scripts/check_release.py
+      - name: Validate publisher metadata
+        env:
+          REGISTRY_ACCESS_TOKEN: ${{ secrets.REGISTRY_ACCESS_TOKEN }}
+        run: python -c "import os; assert os.environ.get('REGISTRY_ACCESS_TOKEN'), 'Configure REGISTRY_ACCESS_TOKEN first'"
+      - uses: Comfy-Org/publish-node-action@main
+        with:
+          personal_access_token: ${{ secrets.REGISTRY_ACCESS_TOKEN }}

@@ -1,0 +1,1 @@
+Generated from sdk-python/src/detailx_sdk, version 0.1.0. Edit canonical source then regenerate. MIT license: ../LICENSE

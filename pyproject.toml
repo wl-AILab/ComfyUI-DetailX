@@ -1,0 +1,19 @@
+[project]
+name = "comfyui-detailx"
+version = "0.1.0"
+description = "DetailX cloud video super-resolution with quoted billing and resumable uploads"
+license = {file = "LICENSE"}
+requires-python = ">=3.10"
+classifiers = ["Operating System :: OS Independent"]
+dependencies = ["httpx==0.28.1", "av>=14,<18", "Pillow>=11,<13"]
+
+[project.urls]
+Repository = "https://github.com/wl-AILab/ComfyUI-DetailX"
+Homepage = "https://www.detail-x.ai"
+"Bug Tracker" = "https://github.com/wl-AILab/ComfyUI-DetailX/issues"
+
+[tool.comfy]
+PublisherId = "wlailab"
+DisplayName = "DetailX Video Upscale"
+includes = ["_vendor"]
+requires-comfyui = ">=0.45.0"

@@ -1,0 +1,9 @@
+{
+  "1": {"class_type": "LoadVideo", "inputs": {"file": "sample.mp4"}},
+  "2": {"class_type": "DetailXUploadVideo", "inputs": {"video": ["1", 0], "request_id": "example-upload-001"}},
+  "3": {"class_type": "DetailXQuote", "inputs": {"upload_id": ["2", 0], "source_result_id": "", "request_id": "example-generation-001", "resolution": "4K", "fps": "preserve", "detail": "default", "light_correct": "default", "flow_smooth": "default", "keep_color": "default", "trajectory_smooth": "default"}},
+  "4": {"class_type": "DetailXSubmit", "inputs": {"prepared": ["3", 0], "confirm_charge": false, "max_precharge_credits": 0}},
+  "5": {"class_type": "DetailXFetchVideo", "inputs": {"generation_id": ["4", 0], "timeout_seconds": 1800}},
+  "6": {"class_type": "SaveVideo", "inputs": {"video": ["5", 0], "filename_prefix": "DetailX/enhanced", "format": "auto", "format.codec": "auto"}},
+  "7": {"class_type": "PreviewAny", "inputs": {"source": ["3", 2]}}
+}

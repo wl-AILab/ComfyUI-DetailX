@@ -8,3 +8,4 @@ PUBLISHING.md
 .github/
 scripts/
 requirements-test.txt
+pytest.ini

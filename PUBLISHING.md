@@ -10,6 +10,16 @@
 
 GitHub 账号是 `wl-AILab`，与 Registry PublisherId 分别配置。DetailX 调用 Key 只用于用户运行节点，不上传 GitHub Secret 或公开包。Registry Key 用于发布，不作为 DetailX 服务凭据。
 
+## 首版状态（2026-11-12）
+
+- [GitHub Release v0.1.0](https://github.com/wl-AILab/ComfyUI-DetailX/releases/tag/v0.1.0) 已发布；[Python 3.10 / 3.12 CI](https://github.com/wl-AILab/ComfyUI-DetailX/actions/runs/43177514616) 通过。
+- [官方 Registry 发布 Action](https://github.com/wl-AILab/ComfyUI-DetailX/actions/runs/43177660863) 成功。Registry 节点为 `NodeStatusActive`，版本 `0.1.0` 为 `NodeVersionStatusPending`，仍需平台审核和索引；不能将其视为已经审核通过。
+- 已使用 comfy-cli 1.26.0 的 `node registry-install comfyui-detailx --version 0.1.0`，在另一份 ComfyUI 0.45.0 源码目录从实际 Registry CDN 包安装。两个目录共用已验收的 CPU Python 环境。
+- 实包含 26 个文件，必要源码、内置 SDK 与可视化工作流均与发布源码相同，不含测试、CI、开发脚本、密钥或状态库。四个节点成功加载，Fetch → 原生 SaveVideo 对已有任务验收通过，输出 1280×720、48 帧、含音轨，没有新建收费任务。
+- 官方 `node.zip` SHA256：`56a70c3ebfbe1ba197a9f9f641cbdef06b5d82a2183602380b563f1d281b5469`。
+
+当前无需补充发布凭据。版本审核状态可通过 [Registry API](https://api.comfy.org/nodes/comfyui-detailx/versions/0.1.0) 查询；Manager 未显示时，可按 README 从 GitHub 安装使用。未来发布继续沿用下面流程。
+
 ## 发布前
 
 使用本目录作为独立仓库根目录，保留 `_vendor/detailx_sdk`。依赖与当前 ComfyUI 自己的 Python 环境安装在一起：

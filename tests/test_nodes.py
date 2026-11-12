@@ -1,4 +1,3 @@
-import importlib.util
 import json
 import sys
 from pathlib import Path
@@ -8,11 +7,7 @@ import httpx
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location("comfyui_detailx", ROOT / "__init__.py", submodule_search_locations=[str(ROOT)])
-package = importlib.util.module_from_spec(spec)
-sys.modules[spec.name] = package
-spec.loader.exec_module(package)
-nodes = sys.modules[spec.name + ".nodes"]
+nodes = sys.modules["comfyui_detailx.nodes"]
 
 
 @pytest.fixture
